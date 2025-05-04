@@ -245,7 +245,7 @@ class HotelApp:
         room_type = self.combo_room_type.get()
         check_in = self.entry_checkin.get()
         check_out = self.entry_checkout.get()
-        room_number_str = self.entry_room_choice.get().strip()
+        room_number_str = self.combo_room_number.get().strip()
 
         if not name or not room_type or not check_in or not check_out:
             messagebox.showerror("Input Error", "Please fill all fields.")
