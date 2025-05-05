@@ -55,7 +55,7 @@ class Booking:
         self.check_out = check_out
 
     def __str__(self):
-        return f"{self.guest} | Room {self.room.room_number} | {self.check_in} to {self.check_out}"
+        return f"{self.guest} | Room {self.room.room_number} | Type: {self.room.room_type()} | {self.check_in} to {self.check_out}"
 
 class Hotel:
     def __init__(self, name: str):
@@ -75,14 +75,14 @@ class Hotel:
                 if requested_room_number is None or room.room_number == requested_room_number:
                     booking = Booking(guest, room, check_in, check_out)
                     self.bookings.append(booking)
-                    return f"Room {room.room_number} booked successfully for {guest.name}"
+                    return f"Room {room.room_number} ({room.room_type()}) booked successfully for {guest.name}"
         return "No available rooms match the criteria"
     
         for room in self.list_available_rooms_on_date(check_in):
             if room.room_type() == room_type:
                 booking = Booking(guest, room, check_in, check_out)
                 self.bookings.append(booking)
-                return f"Room {room.room_number} booked successfully for {guest.name}"
+                return f"Room {room.room_number} ({room.room_type()}) booked successfully for {guest.name}"
         return "No available rooms of requested type"
 
     def list_available_rooms_on_date(self, current_date_str: str):
